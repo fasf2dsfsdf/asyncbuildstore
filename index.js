@@ -1,17 +1,10 @@
-function rotateRight(head, k) {
-  if (!head || k === 0) return head;
-  let length = 1;
-  let tail = head;
-  while (tail.next) {
-    length++;
-    tail = tail.next;
+function removeDuplicates(nums) {
+  let index = 0;
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[index]) {
+      index++;
+      nums[index] = nums[i];
+    }
   }
-  k = k % length;
-  if (k === 0) return head;
-  let newTail = head;
-  for (let i = 1; i < length - k; i++) newTail = newTail.next;
-  const newHead = newTail.next;
-  newTail.next = null;
-  tail.next = head;
-  return newHead;
+  return index + 1;
 }
